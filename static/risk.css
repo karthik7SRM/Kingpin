@@ -1,0 +1,128 @@
+/* ====== General Styles ====== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #e0f7fa, #f1f8e9);
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 36px;
+    font-weight: bold;
+    color: #007bff; /* solid fallback for gradient */
+}
+
+/* ====== Dashboard Container ====== */
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* ====== Card Styles ====== */
+.card {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    padding: 25px;
+    width: 360px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.card h2 {
+    margin-top: 0;
+    color: #ff416c; /* fallback solid color */
+}
+
+/* ====== Inputs and Buttons ====== */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 14px;
+    background: linear-gradient(to right, #f9f9f9, #ffffff);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(to right, #ff4b2b, #ff416c);
+}
+
+/* ====== Sentiment Result ====== */
+#sentiment-result p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* ====== Risk Card ====== */
+.risk-card {
+    margin-top: 20px;
+}
+
+.risk-header h3 {
+    margin: 0;
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ====== Risk Meter ====== */
+.risk-meter {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    height: 20px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.risk-fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out, background 0.5s ease-in-out;
+}
+
+/* Gradient colors for risk fill applied via JS */
+.risk-fill.low { background: linear-gradient(90deg, #33ff77, #00d4ff); }
+.risk-fill.medium { background: linear-gradient(90deg, #ffb347, #ffcc33); }
+.risk-fill.high { background: linear-gradient(90deg, #ff4b2b, #ff416c); }
+
+/* ====== Responsive ====== */
+@media (max-width: 800px) {
+    .dashboard {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card {
+        width: 90%;
+    }
+}
+
