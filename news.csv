@@ -1,0 +1,61 @@
+headline,category,region,Sentiment_Score,Sentiment_Category
+"Logistics firms report quarterly shipment volume growth in Taichung, Taiwan",Business,"Taichung, Taiwan",0.3818,Positive
+"Heatwave triggers road freight restrictions during daytime in Taichung, Taiwan",Weather,"Taichung, Taiwan",0.0,Neutral
+"New distribution center investment announced in Shenzhen, China",Business,"Shenzhen, China",0.0,Neutral
+"IoT tracking rolled out across reefer containers in Shanghai, China",Tech,"Shanghai, China",0.0,Neutral
+"Government unveils national logistics policy updates in Bengaluru, India",Politics,"Bengaluru, India",0.0,Neutral
+"Warehouse automation boosts pick rates by 20 percent in Taipei, Taiwan",Tech,"Taipei, Taiwan",0.3182,Positive
+"3PL partnership expands warehouse capacity in Shenzhen, China",Business,"Shenzhen, China",0.1027,Positive
+"Flooding causes rail cargo reroutes and delays in Delhi, India",Weather,"Delhi, India",0.0,Neutral
+"Carrier deploys AI route optimization to cut delivery delays in New York, USA",Tech,"New York, USA",0.128,Positive
+"New distribution center investment announced in Delhi, India",Business,"Delhi, India",0.0,Neutral
+"Customs duty revisions impact import clearance times in Mumbai, India",Politics,"Mumbai, India",0.0,Neutral
+"Typhoon prompts port closures and vessel diversions in San Francisco, USA",Weather,"San Francisco, USA",0.0,Neutral
+"Blockchain pilot launched for bills of lading in New York, USA",Tech,"New York, USA",0.128,Positive
+"IoT tracking rolled out across reefer containers in Shanghai, China",Tech,"Shanghai, China",0.0,Neutral
+"Severe weather disrupts last-mile deliveries in Taipei, Taiwan",Weather,"Taipei, Taiwan",-0.3818,Negative
+"IoT tracking rolled out across reefer containers in Mumbai, India",Tech,"Mumbai, India",0.0,Neutral
+"Heatwave triggers road freight restrictions during daytime in Singapore, Singapore",Weather,"Singapore, Singapore",0.0,Neutral
+"Cold front slows air cargo operations due to de-icing in Austin, USA",Weather,"Austin, USA",0.0,Neutral
+"IoT tracking rolled out across reefer containers in Austin, USA",Tech,"Austin, USA",0.0,Neutral
+"Customs duty revisions impact import clearance times in Delhi, India",Politics,"Delhi, India",0.0,Neutral
+"Blockchain pilot launched for bills of lading in Bengaluru, India",Tech,"Bengaluru, India",0.128,Positive
+"Warehouse automation boosts pick rates by 20 percent in Austin, USA",Tech,"Austin, USA",0.3182,Positive
+"Logistics firms report quarterly shipment volume growth in New York, USA",Business,"New York, USA",0.3818,Positive
+"Warehouse automation boosts pick rates by 20 percent in Mumbai, India",Tech,"Mumbai, India",0.3182,Positive
+"New distribution center investment announced in Singapore, Singapore",Business,"Singapore, Singapore",0.0,Neutral
+"New distribution center investment announced in Shanghai, China",Business,"Shanghai, China",0.0,Neutral
+"Typhoon prompts port closures and vessel diversions in Austin, USA",Weather,"Austin, USA",0.0,Neutral
+"New distribution center investment announced in Singapore, Singapore",Business,"Singapore, Singapore",0.0,Neutral
+"Typhoon prompts port closures and vessel diversions in Singapore, Singapore",Weather,"Singapore, Singapore",0.0,Neutral
+"Flooding causes rail cargo reroutes and delays in Bengaluru, India",Weather,"Bengaluru, India",0.0,Neutral
+"Flooding causes rail cargo reroutes and delays in Shenzhen, China",Weather,"Shenzhen, China",0.0,Neutral
+"Port throughput rises as backlogs ease in Mumbai, India",Business,"Mumbai, India",0.3612,Positive
+"Severe weather disrupts last-mile deliveries in Taipei, Taiwan",Weather,"Taipei, Taiwan",-0.3818,Negative
+"Warehouse automation boosts pick rates by 20 percent in Shanghai, China",Tech,"Shanghai, China",0.3182,Positive
+"Cold front slows air cargo operations due to de-icing in Singapore, Singapore",Weather,"Singapore, Singapore",0.0,Neutral
+"Port throughput rises as backlogs ease in Delhi, India",Business,"Delhi, India",0.3612,Positive
+"3PL partnership expands warehouse capacity in Austin, USA",Business,"Austin, USA",0.1027,Positive
+"Port throughput rises as backlogs ease in Delhi, India",Business,"Delhi, India",0.3612,Positive
+"Freight rates stabilize on key trade lanes in Austin, USA",Business,"Austin, USA",0.0,Neutral
+"New distribution center investment announced in Austin, USA",Business,"Austin, USA",0.0,Neutral
+"Freight rates stabilize on key trade lanes in Shanghai, China",Business,"Shanghai, China",0.0,Neutral
+"Cold front slows air cargo operations due to de-icing in Mumbai, India",Weather,"Mumbai, India",0.0,Neutral
+"Carrier deploys AI route optimization to cut delivery delays in Shenzhen, China",Tech,"Shenzhen, China",0.128,Positive
+"New distribution center investment announced in Singapore, Singapore",Business,"Singapore, Singapore",0.0,Neutral
+"Cold front slows air cargo operations due to de-icing in Delhi, India",Weather,"Delhi, India",0.0,Neutral
+"Digital freight platform adds spot booking feature in Singapore, Singapore",Tech,"Singapore, Singapore",0.0,Neutral
+"3PL partnership expands warehouse capacity in Singapore, Singapore",Business,"Singapore, Singapore",0.1027,Positive
+"Cold front slows air cargo operations due to de-icing in Austin, USA",Weather,"Austin, USA",0.0,Neutral
+"Customs duty revisions impact import clearance times in Singapore, Singapore",Politics,"Singapore, Singapore",0.0,Neutral
+"Severe weather disrupts last-mile deliveries in Shanghai, China",Weather,"Shanghai, China",-0.3818,Negative
+"Warehouse automation boosts pick rates by 20 percent in Austin, USA",Tech,"Austin, USA",0.3182,Positive
+"Port authority issues new container handling guidelines in San Francisco, USA",Politics,"San Francisco, USA",0.0772,Positive
+"Heatwave triggers road freight restrictions during daytime in Mumbai, India",Weather,"Mumbai, India",0.0,Neutral
+"Flooding causes rail cargo reroutes and delays in Singapore, Singapore",Weather,"Singapore, Singapore",0.0,Neutral
+"Warehouse automation boosts pick rates by 20 percent in New York, USA",Tech,"New York, USA",0.3182,Positive
+"Warehouse automation boosts pick rates by 20 percent in Shenzhen, China",Tech,"Shenzhen, China",0.3182,Positive
+"Government unveils national logistics policy updates in Austin, USA",Politics,"Austin, USA",0.0,Neutral
+"Port authority issues new container handling guidelines in Shanghai, China",Politics,"Shanghai, China",0.0772,Positive
+"3PL partnership expands warehouse capacity in Austin, USA",Business,"Austin, USA",0.1027,Positive
+"Government unveils national logistics policy updates in San Francisco, USA",Politics,"San Francisco, USA",0.0,Neutral
