@@ -12,7 +12,7 @@ const countryFlagOutput = document.querySelector(".country-flag");
 const cityOutput = document.querySelector(".city");
 const compOutput = document.querySelector(".comp");
 
-// Major ports dataset
+// Major ports dataset (replacing famous companies)
 const majorPorts = {
     India: [
         "Jawaharlal Nehru Port (Nhava Sheva, Mumbai)",
@@ -36,7 +36,7 @@ const majorPorts = {
     Singapore: [
         "Port of Singapore (PSA Singapore)"
     ],
-    UnitedStates: [
+    "United States": [
         "Port of Los Angeles",
         "Port of Long Beach",
         "Port of New York and New Jersey",
@@ -72,20 +72,24 @@ countries.forEach(country => {
             })
             .then(data => {
                 const countryData = data[0];
-                const countryName = countryData.name.common;
-                const normalizedName = countryName.replace(/\s/g, "");
 
                 // Fill in country info
-                countryNameOutput.innerText = countryName;
+                countryNameOutput.innerText = countryData.name.common;
 
-                // Get ports data
-                const ports = majorPorts[countryName] || majorPorts[normalizedName];
+                // Normalize name (remove spaces for dataset match)
+                const normalizedName = countryData.name.common.replace(/\s/g, "");
 
-                if (ports) {
-                    compOutput.innerHTML = `<h4>Major Ports:</h4><ul>${ports.map(p => `<li>${p}</li>`).join("")}</ul>`;
-                } else {
-                    compOutput.innerHTML = `<h4>Major Ports:</h4><p>No data available</p>`;
-                }
+                // Show major ports (in place of famous companies)
+                // Show only major ports (remove Manufacturing cities & Famous Companies)
+            const ports = majorPorts[countryData.name.common] || majorPorts[normalizedName];
+            if (ports) {
+                cityOutput.innerText = ""; // clear old "Manufacturing cities"
+                compOutput.innerHTML = `<ul>${ports.map(p => `<li>${p}</li>`).join("")}</ul>`;
+            } else {
+                cityOutput.innerText = "";
+                compOutput.innerHTML = "No data available";
+}
+
 
                 // Set flag and show container after it loads
                 countryFlagOutput.src = countryData.flags?.png || countryData.flags?.svg || "";
@@ -105,7 +109,7 @@ countries.forEach(country => {
     });
 });
 
-// Close side panel
+// Optional: close side panel
 closeBtn.addEventListener("click", () => {
     sidePanel.classList.remove("side-panel-open");
 });
