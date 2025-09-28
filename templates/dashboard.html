@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supply Chain Risk Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='risk.css') }}">
+    <style>
+        /* Minimal embedded styling if risk.css is missing */
+        body { font-family: Arial, sans-serif; background: #f4f4f4; margin: 0; padding: 20px; }
+        h1 { text-align: center; color: #333; }
+        .dashboard { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+        .card { background: white; padding: 20px; border-radius: 10px; width: 350px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        input, button { width: 100%; padding: 10px; margin-top: 10px; border-radius: 5px; border: 1px solid #ccc; }
+        button { cursor: pointer; background: #007bff; color: white; border: none; }
+        .risk-card { margin-top: 15px; }
+        .risk-meter { width: 100%; background: #eee; border-radius: 5px; height: 20px; margin-top: 5px; }
+        .risk-fill { height: 100%; width: 0; border-radius: 5px; transition: width 0.5s; }
+    </style>
+</head>
+<body>
+    <h1>Warehouse Solutions</h1>
+    <div class="dashboard">
+
+        <!-- Sentiment Analysis -->
+        <div class="card">
+            <h2>Sentiment Analysis</h2>
+            <input type="text" id="headline" placeholder="Enter news headline...">
+            <button onclick="analyzeSentiment()">Analyze Sentiment</button>
+            <div id="sentiment-result" style="margin-top: 10px;">
+                <p><b>Headline:</b> <span id="sentiment-headline">N/A</span></p>
+                <p><b>Score:</b> <span id="sentiment-score">N/A</span></p>
+                <p><b>Sentiment:</b> <span id="sentiment-label">N/A</span></p>
+                <p><b>Risk:</b> <span id="sentiment-risk">N/A</span></p>
+            </div>
+        </div>
+
+        <!-- XGBoost Risk Classification -->
+        <div class="card">
+            <h2>Supplier Risk Classification</h2>
+            <input type="text" id="supplier" placeholder="Supplier name">
+            <input type="text" id="city" placeholder="City">
+            <input type="number" id="delays" placeholder="Number of delays">
+            <input type="number" id="quality" placeholder="Number of quality issues">
+            <input type="number" id="leadtime" placeholder="Average lead time (days)">
+            <button onclick="predictRisk()">Predict Risk</button>
+
+            <div class="risk-card">
+                <div class="risk-header">
+                    <h3>Risk Level: <span id="risk-category">N/A</span></h3>
+                </div>
+                <div class="risk-meter">
+                    <div class="risk-fill" id="risk-fill"></div>
+                </div>
+                <p id="risk-score">Level: N/A</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // --- Sentiment Analysis ---
+        async function analyzeSentiment() {
+            const headline = document.getElementById("headline").value;
+            if (!headline.trim()) return alert("Please enter a headline");
+
+            const response = await fetch("/analyze", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ headline })
+            });
+
+            const data = await response.json();
+            if (data.error) {
+                alert("Error: " + data.error);
+                return;
+            }
+
+            document.getElementById("sentiment-headline").textContent = data.headline;
+            document.getElementById("sentiment-score").textContent = data.score;
+            document.getElementById("sentiment-label").textContent = data.sentiment;
+            document.getElementById("sentiment-risk").textContent = data.risk;
+        }
+
+        // --- XGBoost Risk Prediction ---
+        async function predictRisk() {
+            const payload = {
+                Supplier: document.getElementById("supplier").value,
+                City: document.getElementById("city").value,
+                Num_Delays: parseInt(document.getElementById("delays").value) || 0,
+                Quality_Issues: parseInt(document.getElementById("quality").value) || 0,
+                Avg_Lead_Time: parseInt(document.getElementById("leadtime").value) || 0
+            };
+
+            const response = await fetch("/predict", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json();
+            if (data.error) {
+                alert("Error: " + data.error);
+                return;
+            }
+
+            updateRiskUI(data.risk_level);
+        }
+
+        function updateRiskUI(risk) {
+            const fill = document.getElementById("risk-fill");
+            const category = document.getElementById("risk-category");
+            const scoreText = document.getElementById("risk-score");
+
+            let width = 0;
+            let color = "#33ff77"; // default low
+
+            if (risk === "High") { width = 100; color = "#ff4b2b"; }
+            else if (risk === "Medium") { width = 60; color = "#ffb347"; }
+            else { width = 30; color = "#33ff77"; }
+
+            fill.style.width = width + "%";
+            fill.style.background = color;
+
+            category.textContent = risk;
+            scoreText.textContent = "Level: " + risk;
+        }
+    </script>
+</body>
+</html>
