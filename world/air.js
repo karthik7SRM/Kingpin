@@ -36,8 +36,8 @@ const majorAirports = {
     Singapore: [
         "Singapore Changi Airport (SIN)"
     ],
-    UnitedStates: [
-        "Hartsfield–Jackson Atlanta International Airport (ATL)",
+    "United States": [
+        "Hartsfield Jackson Atlanta International Airport (ATL)",
         "Los Angeles International Airport (LAX)",
         "Chicago O'Hare International Airport (ORD)",
         "Dallas/Fort Worth International Airport (DFW)",
@@ -47,23 +47,18 @@ const majorAirports = {
     ]
 };
 
-// Hover effect
+// Hover effect & click event
 countries.forEach(country => {
-    country.addEventListener("mouseenter", function () {
-        this.style.fill = '#c99aff';
-    });
+    country.addEventListener("mouseenter", () => country.style.fill = '#c99aff');
+    country.addEventListener("mouseout", () => country.style.fill = '#443d4b');
 
-    country.addEventListener("mouseout", function () {
-        this.style.fill = '#443d4b';
-    });
-
-    // Click event
-    country.addEventListener("click", function () {
+    country.addEventListener("click", () => {
         loading.innerText = "Loading...";
         container.classList.add("hide");
         loading.classList.remove("hide");
 
-        const clickedCountryName = this.getAttribute("name") || this.classList[0];
+        // Get country name from 'name' attribute or first class
+        const clickedCountryName = country.getAttribute("name") || country.classList[0];
         sidePanel.classList.add("side-panel-open");
 
         fetch(`https://restcountries.com/v3.1/name/${clickedCountryName}?fullText=true`)
@@ -74,22 +69,30 @@ countries.forEach(country => {
             .then(data => {
                 const countryData = data[0];
 
-                // Fill in country info
+                // Display country name
                 countryNameOutput.innerText = countryData.name.common;
 
+                // Normalize name for dataset match
+                const normalizedName = countryData.name.common.replace(/\s/g, "");
+
                 // Show major airports if available
-                const airports = majorAirports[countryData.name.common];
+                const airports = majorAirports[countryData.name.common] || majorAirports[normalizedName];
                 if (airports) {
-                    cityOutput.innerText = "Major Airports:";
                     compOutput.innerHTML = `<ul>${airports.map(a => `<li>${a}</li>`).join("")}</ul>`;
                 } else {
-                    cityOutput.innerText = "Major Airports:";
                     compOutput.innerHTML = "No data available";
                 }
 
-                // Set flag and show container after it loads
-                countryFlagOutput.src = countryData.flags.png;
+                // Display country flag
+                countryFlagOutput.src = countryData.flags?.png || countryData.flags?.svg || "";
+                countryFlagOutput.alt = `${countryData.name.common} flag`;
+
+                // Show container after flag loads
                 countryFlagOutput.onload = () => {
+                    container.classList.remove("hide");
+                    loading.classList.add("hide");
+                };
+                countryFlagOutput.onerror = () => {
                     container.classList.remove("hide");
                     loading.classList.add("hide");
                 };
@@ -101,7 +104,5 @@ countries.forEach(country => {
     });
 });
 
-// Optional: close side panel
-closeBtn.addEventListener("click", () => {
-    sidePanel.classList.remove("side-panel-open");
-});
+// Close side panel
+closeBtn.addEventListener("click", () => sidePanel.classList.remove("side-panel-open"));
